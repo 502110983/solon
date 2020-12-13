@@ -5,6 +5,7 @@ import org.noear.solon.Utils;
 import org.noear.solon.core.message.Listener;
 import org.noear.solon.core.message.Message;
 import org.noear.solon.core.message.Session;
+import org.noear.solon.core.util.TextUtil;
 import org.noear.solon.core.util.ThrowableUtil;
 
 import java.util.concurrent.CompletableFuture;
@@ -46,7 +47,7 @@ public abstract class SessionBase implements Session {
      */
     @Override
     public Message sendAndResponse(Message message) {
-        if (Utils.isEmpty(message.key())) {
+        if (TextUtil.isEmpty(message.key())) {
             throw new IllegalArgumentException("SendAndResponse message no key");
         }
 
@@ -70,7 +71,7 @@ public abstract class SessionBase implements Session {
      */
     @Override
     public void sendAndCallback(Message message, BiConsumer<Message, Throwable> callback) {
-        if (Utils.isEmpty(message.key())) {
+        if (TextUtil.isEmpty(message.key())) {
             throw new IllegalArgumentException("sendAndCallback message no key");
         }
 

@@ -6,6 +6,7 @@ import org.noear.solon.Utils;
 import org.noear.solon.core.event.EventBus;
 import org.noear.solon.core.message.Message;
 import org.noear.solon.core.message.Session;
+import org.noear.solon.core.util.TextUtil;
 
 /**
  * SocketD 上下文处理者
@@ -22,7 +23,7 @@ public class SocketContextHandler {
         }
 
         //没有资源描述的，不进入Handler体系
-        if (Utils.isEmpty(message.resourceDescriptor())) {
+        if (TextUtil.isEmpty(message.resourceDescriptor())) {
             return;
         }
 

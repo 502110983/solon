@@ -6,6 +6,7 @@ import org.noear.solon.core.Aop;
 import org.noear.solon.core.Plugin;
 import org.noear.solon.core.message.Listener;
 import org.noear.solon.core.message.Session;
+import org.noear.solon.core.util.TextUtil;
 import org.noear.solon.extend.socketd.annotation.ClientEndpoint;
 
 public class XPluginImp implements Plugin {
@@ -23,7 +24,7 @@ public class XPluginImp implements Plugin {
                 session.listener(l);
 
                 //发送握手包
-                if (Utils.isNotEmpty(anno.handshakeHeader())) {
+                if (TextUtil.isNotEmpty(anno.handshakeHeader())) {
                     session.sendHandshake(MessageUtils.wrapHandshake(anno.handshakeHeader()));
                 }
 

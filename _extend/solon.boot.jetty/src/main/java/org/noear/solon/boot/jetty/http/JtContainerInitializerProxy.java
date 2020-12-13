@@ -6,6 +6,7 @@ import org.noear.solon.Utils;
 import org.noear.solon.boot.jetty.holder.FilterHodler;
 import org.noear.solon.boot.jetty.holder.ServletHolder;
 import org.noear.solon.core.Aop;
+import org.noear.solon.core.util.TextUtil;
 import org.noear.solon.core.util.ThrowableUtil;
 
 import javax.servlet.*;
@@ -80,7 +81,7 @@ public class JtContainerInitializerProxy extends AbstractLifeCycle.AbstractLifeC
 
 
             String name = f.anno.filterName();
-            if (Utils.isEmpty(name)) {
+            if (TextUtil.isEmpty(name)) {
                 name = f.filter.getClass().getSimpleName();
             }
 
@@ -110,7 +111,7 @@ public class JtContainerInitializerProxy extends AbstractLifeCycle.AbstractLifeC
             }
 
             String name = s.anno.name();
-            if (Utils.isEmpty(name)) {
+            if (TextUtil.isEmpty(name)) {
                 name = s.servlet.getClass().getSimpleName();
             }
 

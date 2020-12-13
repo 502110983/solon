@@ -9,6 +9,7 @@ import org.noear.solon.SolonApp;
 import org.noear.solon.Utils;
 import org.noear.solon.core.Aop;
 import org.noear.solon.core.Plugin;
+import org.noear.solon.core.util.TextUtil;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -31,14 +32,14 @@ public class XPluginImp implements Plugin {
                 return;
             }
 
-            if (Utils.isEmpty(anno.value())) {
+            if (TextUtil.isEmpty(anno.value())) {
                 NamiClient anno2 = varH.getType().getAnnotation(NamiClient.class);
                 if (anno2 != null) {
                     anno = anno2;
                 }
             }
 
-            if (Utils.isEmpty(anno.value())) {
+            if (TextUtil.isEmpty(anno.value())) {
                 throw new NamiException("@NamiClient configuration error!");
             }
 

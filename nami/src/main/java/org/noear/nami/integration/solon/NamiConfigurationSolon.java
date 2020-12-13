@@ -7,11 +7,12 @@ import org.noear.solon.Utils;
 import org.noear.solon.core.Aop;
 import org.noear.solon.core.Bridge;
 import org.noear.solon.core.LoadBalance;
+import org.noear.solon.core.util.TextUtil;
 
 public class NamiConfigurationSolon implements NamiConfiguration {
     @Override
     public void config(NamiClient client, Nami.Builder builder) {
-        if (Utils.isEmpty(client.value())) {
+        if (TextUtil.isEmpty(client.value())) {
             return;
         }
 

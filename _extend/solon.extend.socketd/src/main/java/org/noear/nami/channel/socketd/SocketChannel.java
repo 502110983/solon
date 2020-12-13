@@ -9,6 +9,7 @@ import org.noear.solon.Utils;
 import org.noear.solon.core.message.Message;
 import org.noear.solon.core.message.Session;
 import org.noear.solon.core.util.HeaderUtil;
+import org.noear.solon.core.util.TextUtil;
 import org.noear.solon.extend.socketd.annotation.Handshake;
 
 import java.lang.reflect.Method;
@@ -39,7 +40,7 @@ public class SocketChannel implements NamiChannel {
             if (handshake != null) {
                 flag = -1;
 
-                if (Utils.isNotEmpty(handshake.handshakeHeader())) {
+                if (TextUtil.isNotEmpty(handshake.handshakeHeader())) {
                     Map<String, String> headerMap = HeaderUtil.decodeHeaderMap(handshake.handshakeHeader());
                     headers.putAll(headerMap);
                 }

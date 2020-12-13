@@ -5,6 +5,7 @@ import org.noear.solon.core.handle.ContextEmpty;
 import org.noear.solon.core.handle.MethodType;
 import org.noear.solon.core.message.Message;
 import org.noear.solon.core.message.Session;
+import org.noear.solon.core.util.TextUtil;
 
 import java.io.*;
 import java.net.InetSocketAddress;
@@ -30,7 +31,7 @@ public class SocketContext extends ContextEmpty {
         _method = session.method();
         _inetSocketAddress = session.getRemoteAddress();
 
-        if (Utils.isNotEmpty(message.header())) {
+        if (TextUtil.isNotEmpty(message.header())) {
             headerMap().putAll(_message.headerMap());
         }
     }
