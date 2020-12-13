@@ -2,6 +2,7 @@ package org.noear.solon.core;
 
 import org.noear.solon.Utils;
 import org.noear.solon.core.handle.Context;
+import org.noear.solon.core.util.TextUtil;
 import org.noear.solon.ext.LinkedCaseInsensitiveMap;
 
 import java.util.Arrays;
@@ -58,7 +59,7 @@ public class NvMap extends LinkedCaseInsensitiveMap<String> {
 
     public int getInt(String key) {
         String temp = get(key);
-        if (Utils.isEmpty(temp)) {
+        if (TextUtil.isEmpty(temp)) {
             return 0;
         } else {
             return Integer.parseInt(temp);
@@ -67,7 +68,7 @@ public class NvMap extends LinkedCaseInsensitiveMap<String> {
 
     public long getLong(String key) {
         String temp = get(key);
-        if (Utils.isEmpty(temp)) {
+        if (TextUtil.isEmpty(temp)) {
             return 0l;
         } else {
             return Long.parseLong(temp);
@@ -76,7 +77,7 @@ public class NvMap extends LinkedCaseInsensitiveMap<String> {
 
     public double getDouble(String key) {
         String temp = get(key);
-        if (Utils.isEmpty(temp)) {
+        if (TextUtil.isEmpty(temp)) {
             return 0d;
         } else {
             return Double.parseDouble(temp);

@@ -2,6 +2,7 @@ package org.noear.solon.core.handle;
 
 import org.noear.solon.Utils;
 import org.noear.solon.core.util.PrintUtil;
+import org.noear.solon.core.util.TextUtil;
 import org.noear.solon.core.util.ThrowableUtil;
 
 import java.util.HashMap;
@@ -98,7 +99,7 @@ public class RenderManager implements Render {
         if (data instanceof ModelAndView) {
             ModelAndView mv = (ModelAndView) data;
 
-            if (Utils.isNotEmpty(mv.view())) {
+            if (TextUtil.isNotEmpty(mv.view())) {
                 //
                 //如果有视图
                 //
@@ -135,7 +136,7 @@ public class RenderManager implements Render {
         if (data instanceof ModelAndView) {
             ModelAndView mv = (ModelAndView) data;
 
-            if (Utils.isEmpty(mv.view()) == false) {
+            if (TextUtil.isEmpty(mv.view()) == false) {
                 //
                 //如果有视图
                 //
@@ -168,11 +169,11 @@ public class RenderManager implements Render {
         Render render = null;
         String mode = ctx.header("X-Serialization");
 
-        if(Utils.isEmpty(mode)){
+        if(TextUtil.isEmpty(mode)){
             mode = ctx.attr("@render");
         }
 
-        if (Utils.isEmpty(mode) == false) {
+        if (TextUtil.isEmpty(mode) == false) {
             render = _mapping.get(mode);
 
             if (render == null) {

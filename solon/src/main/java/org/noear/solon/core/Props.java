@@ -2,6 +2,7 @@ package org.noear.solon.core;
 
 import org.noear.solon.SolonProps;
 import org.noear.solon.Utils;
+import org.noear.solon.core.util.TextUtil;
 import org.noear.solon.core.wrap.ClassWrap;
 
 import java.util.Properties;
@@ -81,7 +82,7 @@ public class Props extends Properties {
 
     private <T> T getOrDef(String key, T def, Function<String, T> convert) {
         String temp = get(key);
-        if (Utils.isEmpty(temp)) {
+        if (TextUtil.isEmpty(temp)) {
             return def;
         } else {
             return convert.apply(temp);

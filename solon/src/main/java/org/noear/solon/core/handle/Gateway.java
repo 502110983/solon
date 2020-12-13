@@ -6,6 +6,7 @@ import org.noear.solon.annotation.Note;
 import org.noear.solon.core.*;
 import org.noear.solon.core.event.EventBus;
 import org.noear.solon.core.util.PathUtil;
+import org.noear.solon.core.util.TextUtil;
 import org.noear.solon.ext.RunnableEx;
 import org.noear.solon.ext.DataThrowable;
 
@@ -234,7 +235,7 @@ public abstract class Gateway extends HandlerAide implements Handler, Render {
             if (h instanceof Action) {
                 Action h2 = (Action) h;
 
-                if (Utils.isEmpty(h2.name())) {
+                if (TextUtil.isEmpty(h2.name())) {
                     _def = h2;
                 } else {
                     add(h2.name(), h2);

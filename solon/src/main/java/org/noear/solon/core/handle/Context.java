@@ -4,6 +4,7 @@ import org.noear.solon.Utils;
 import org.noear.solon.annotation.Note;
 import org.noear.solon.core.*;
 import org.noear.solon.core.util.PathUtil;
+import org.noear.solon.core.util.TextUtil;
 import org.noear.solon.core.util.ThrowableUtil;
 import org.noear.solon.core.wrap.ClassWrap;
 
@@ -201,7 +202,7 @@ public abstract class Context {
     @Note("获取参数并转为BigDecimal")
     public BigDecimal paramAsDecimal(String key, BigDecimal def){
         String tmp = param(key);
-        if(Utils.isEmpty(tmp)){
+        if(TextUtil.isEmpty(tmp)){
             return def;
         }else{
             return new BigDecimal(tmp);

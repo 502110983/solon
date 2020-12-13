@@ -4,6 +4,7 @@ import org.noear.solon.Solon;
 import org.noear.solon.Utils;
 import org.noear.solon.core.*;
 import org.noear.solon.core.event.EventBus;
+import org.noear.solon.core.util.TextUtil;
 import org.noear.solon.core.util.ThrowableUtil;
 import org.noear.solon.ext.DataThrowable;
 import org.noear.solon.core.wrap.MethodWrap;
@@ -120,7 +121,7 @@ public class Action extends HandlerAide implements Handler {
 
     @Override
     public void handle(Context x) throws Throwable {
-        if (Utils.isNotEmpty(mConsumes)) {
+        if (TextUtil.isNotEmpty(mConsumes)) {
             if (x.contentType() == null || x.contentType().contains(mConsumes) == false) {
                 x.statusSet(415);
                 return;
@@ -203,7 +204,7 @@ public class Action extends HandlerAide implements Handler {
                     x.result = tmp;
 
                     //设定输出产品（放在这个位置正好）
-                    if (Utils.isEmpty(mProduces) == false) {
+                    if (TextUtil.isEmpty(mProduces) == false) {
                         x.contentType(mProduces);
                     }
 

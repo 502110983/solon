@@ -4,6 +4,7 @@ import org.noear.solon.Solon;
 import org.noear.solon.Utils;
 import org.noear.solon.core.util.PrintUtil;
 import org.noear.solon.core.util.ResourceUtil;
+import org.noear.solon.core.util.TextUtil;
 
 import java.io.File;
 import java.net.URL;
@@ -50,7 +51,7 @@ public class ExtendLoader {
 
         loaders.add(JarClassLoader.global());
 
-        if (Utils.isNotEmpty(extend)) {
+        if (TextUtil.isNotEmpty(extend)) {
             if (extend.startsWith("!")) {
                 extend = extend.substring(1);
                 autoMake = true;

@@ -6,6 +6,7 @@ import org.noear.solon.Utils;
 import org.noear.solon.annotation.Note;
 import org.noear.solon.core.util.PropUtil;
 import org.noear.solon.core.util.ResourceUtil;
+import org.noear.solon.core.util.TextUtil;
 import org.noear.solon.core.wrap.ClassWrap;
 import org.noear.solon.core.util.ConvertUtil;
 
@@ -121,7 +122,7 @@ public abstract class BeanContainer {
      * @param wrap 如果raw为null，拒绝注册
      */
     public void putWrap(String name, BeanWrap wrap) {
-        if (Utils.isEmpty(name) == false && wrap.raw() != null) {
+        if (TextUtil.isEmpty(name) == false && wrap.raw() != null) {
             if (beans.containsKey(name) == false) {
                 beans.put(name, wrap);
                 beanNotice(name, wrap);
@@ -196,7 +197,7 @@ public abstract class BeanContainer {
      * 尝试BEAN注册（按名字和类型存入容器；并进行类型印射）
      */
     public void beanRegister(BeanWrap bw, String name, boolean typed) {
-        if (Utils.isNotEmpty(name)) {
+        if (TextUtil.isNotEmpty(name)) {
             //有name的，只用name注入
             //
             putWrap(name, bw);
@@ -228,7 +229,7 @@ public abstract class BeanContainer {
      * @param name 名字（bean name || config ${name}）
      */
     public void beanInject(VarHolder varH, String name) {
-        if (Utils.isEmpty(name)) {
+        if (TextUtil.isEmpty(name)) {
             //如果没有name,使用类型进行获取 bean
             getWrapAsyn(varH.getType(), (bw) -> {
                 varH.setValue(bw.get());

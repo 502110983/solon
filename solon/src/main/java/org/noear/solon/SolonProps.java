@@ -7,6 +7,7 @@ import org.noear.solon.core.Props;
 import org.noear.solon.core.util.PropUtil;
 import org.noear.solon.core.util.ResourceScaner;
 import org.noear.solon.core.util.ResourceUtil;
+import org.noear.solon.core.util.TextUtil;
 
 import java.net.URL;
 import java.util.*;
@@ -57,7 +58,7 @@ public final class SolonProps extends Props {
 
         //2.2.加载活动配置
         String active = get("solon.profiles.active");
-        if(Utils.isNotEmpty(active)) {
+        if(TextUtil.isNotEmpty(active)) {
             loadAdd(ResourceUtil.getResource("application-" + active + ".properties"));
             loadAdd(ResourceUtil.getResource("application-" + active + ".yml"));
         }
@@ -81,13 +82,13 @@ public final class SolonProps extends Props {
 
         //5.扩展文件夹
         extend = this.args.get("extend");
-        if (Utils.isEmpty(extend)) {
+        if (TextUtil.isEmpty(extend)) {
             extend = get("solon.extend");
         }
 
         //5.1.扩展文件夹过滤器
         extendFilter = this.args.get("extend.filter");
-        if (Utils.isEmpty(extendFilter)) {
+        if (TextUtil.isEmpty(extendFilter)) {
             extendFilter = get("solon.extend.filter");
         }
 
@@ -153,7 +154,7 @@ public final class SolonProps extends Props {
 
             String clzName = p.get("solon.plugin");
 
-            if (Utils.isEmpty(clzName) == false) {
+            if (TextUtil.isEmpty(clzName) == false) {
                 PluginEntity ent = new PluginEntity(classLoader, clzName);
                 ent.priority = p.getInt("solon.plugin.priority", 0);
 

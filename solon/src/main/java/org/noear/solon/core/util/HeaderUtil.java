@@ -30,7 +30,7 @@ public class HeaderUtil {
     public static Map<String, String> decodeHeaderMap(String header) {
         NvMap headerMap = new NvMap();
 
-        if (Utils.isNotEmpty(header)) {
+        if (TextUtil.isNotEmpty(header)) {
             String[] ss = header.split("&");
             for (String s : ss) {
                 String[] kv = s.split("=");

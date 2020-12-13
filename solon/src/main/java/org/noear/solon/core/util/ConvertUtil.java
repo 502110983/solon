@@ -51,7 +51,7 @@ public class ConvertUtil {
             Param xd = element.getAnnotation(Param.class);
             SimpleDateFormat format = null;
 
-            if (xd != null && Utils.isEmpty(xd.value()) == false) {
+            if (xd != null && TextUtil.isEmpty(xd.value()) == false) {
                 format = new SimpleDateFormat(xd.value());
             } else {
                 format = DATE_DEF_FORMAT;

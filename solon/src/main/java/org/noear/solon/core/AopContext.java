@@ -9,6 +9,7 @@ import org.noear.solon.core.handle.Handler;
 import org.noear.solon.core.handle.HandlerLoader;
 import org.noear.solon.core.message.Listener;
 import org.noear.solon.core.util.PropUtil;
+import org.noear.solon.core.util.TextUtil;
 import org.noear.solon.core.wrap.ClassWrap;
 import org.noear.solon.core.wrap.FieldWrap;
 import org.noear.solon.core.wrap.MethodWrap;
@@ -48,7 +49,7 @@ public class AopContext extends BeanContainer {
         //注册 @Configuration 构建器
         beanBuilderAdd(Configuration.class, (clz, bw, anno) -> {
             Inject typeInj = clz.getAnnotation(Inject.class);
-            if (typeInj != null && Utils.isNotEmpty(typeInj.value())) {
+            if (typeInj != null && TextUtil.isNotEmpty(typeInj.value())) {
                 if (typeInj.value().startsWith("${")) {
                     PropUtil.injectProperties(bw.raw(), Solon.cfg().getPropByExpr(typeInj.value()));
                 }
@@ -246,7 +247,7 @@ public class AopContext extends BeanContainer {
      * ::扫描源下的所有 bean 及对应处理
      */
     public void beanScan(ClassLoader classLoader, String basePackage) {
-        if (Utils.isEmpty(basePackage)) {
+        if (TextUtil.isEmpty(basePackage)) {
             return;
         }
 
@@ -382,7 +383,7 @@ public class AopContext extends BeanContainer {
             if (raw instanceof BeanWrap) {
                 m_bw = (BeanWrap) raw;
             } else {
-                if (beanInj != null && Utils.isEmpty(beanInj.value()) == false) {
+                if (beanInj != null && TextUtil.isEmpty(beanInj.value()) == false) {
                     if (beanInj.value().startsWith("${")) {
                         PropUtil.injectProperties(raw, Solon.cfg().getPropByExpr(beanInj.value()));
                     }

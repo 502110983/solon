@@ -12,6 +12,7 @@ import org.noear.solon.core.event.AppLoadEndEvent;
 import org.noear.solon.core.event.BeanLoadEndEvent;
 import org.noear.solon.core.event.PluginLoadEndEvent;
 import org.noear.solon.core.message.Listener;
+import org.noear.solon.core.util.TextUtil;
 import org.noear.solon.core.util.ThrowableUtil;
 
 import java.lang.annotation.Annotation;
@@ -43,7 +44,7 @@ public class SolonApp implements Handler, HandlerSlots {
 
         //1.尝试加载扩展文件夹
         String filterStr = cfg().extendFilter();
-        if (Utils.isEmpty(filterStr)) {
+        if (TextUtil.isEmpty(filterStr)) {
             //不需要过滤
             loaderList = ExtendLoader.load(cfg().extend(), false);
         } else {
