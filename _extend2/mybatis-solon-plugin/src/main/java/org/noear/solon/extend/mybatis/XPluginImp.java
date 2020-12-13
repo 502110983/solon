@@ -5,6 +5,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.noear.solon.SolonApp;
 import org.noear.solon.Utils;
 import org.noear.solon.core.*;
+import org.noear.solon.core.util.TextUtil;
 
 import javax.sql.DataSource;
 
@@ -18,7 +19,7 @@ public class XPluginImp implements Plugin {
                 return;
             }
 
-            if (Utils.isEmpty(anno.value())) {
+            if (TextUtil.isEmpty(anno.value())) {
                 Aop.getAsyn(DataSource.class, (dsBw) -> {
                     create0(clz, dsBw);
                 });
@@ -32,7 +33,7 @@ public class XPluginImp implements Plugin {
         });
 
         Aop.context().beanInjectorAdd(Db.class, (varH, anno) -> {
-            if (Utils.isEmpty(anno.value())) {
+            if (TextUtil.isEmpty(anno.value())) {
                 Aop.getAsyn(DataSource.class, (dsBw) -> {
                     inject0(varH, dsBw);
                 });

@@ -1,6 +1,7 @@
 package org.noear.solon.extend.data;
 
 import org.noear.solon.Utils;
+import org.noear.solon.core.util.TextUtil;
 import org.noear.solon.extend.data.annotation.Cache;
 import org.noear.solon.extend.data.annotation.CachePut;
 import org.noear.solon.extend.data.annotation.CacheRemove;
@@ -51,7 +52,7 @@ public class CacheExecutorImp {
                 //
                 cs.store(key, result, anno.seconds());
 
-                if (Utils.isNotEmpty(anno.tags())) {
+                if (TextUtil.isNotEmpty(anno.tags())) {
                     String tags = formatTags(anno.tags(), parMap);
                     CacheTags ct = new CacheTags(cs);
 
@@ -70,7 +71,7 @@ public class CacheExecutorImp {
      * 清除缓存
      */
     public void cacheRemove(CacheRemove anno, Method method, Parameter[] params, Object[] values) {
-        if (anno == null || Utils.isEmpty(anno.tags())) {
+        if (anno == null || TextUtil.isEmpty(anno.tags())) {
             return;
         }
 
@@ -94,7 +95,7 @@ public class CacheExecutorImp {
      * 更新缓存
      */
     public void cachePut(CachePut anno, Method method, Parameter[] params, Object[] values, Object newValue) {
-        if (anno == null || Utils.isEmpty(anno.tags())) {
+        if (anno == null || TextUtil.isEmpty(anno.tags())) {
             return;
         }
 

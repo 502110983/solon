@@ -3,6 +3,7 @@ package org.noear.weed.solon.plugin;
 import org.noear.solon.SolonApp;
 import org.noear.solon.Utils;
 import org.noear.solon.core.*;
+import org.noear.solon.core.util.TextUtil;
 import org.noear.weed.BaseMapper;
 import org.noear.weed.DbContext;
 import org.noear.weed.WeedConfig;
@@ -29,7 +30,7 @@ public class XPluginImp implements Plugin {
                 return;
             }
 
-            if (Utils.isEmpty(anno.value())) {
+            if (TextUtil.isEmpty(anno.value())) {
                 Aop.getAsyn(DataSource.class, (dsBw) -> {
                     create0(clz, dsBw);
                 });
@@ -43,7 +44,7 @@ public class XPluginImp implements Plugin {
         });
 
         Aop.context().beanInjectorAdd(Db.class, (varH, anno) -> {
-            if (Utils.isEmpty(anno.value())) {
+            if (TextUtil.isEmpty(anno.value())) {
                 Aop.getAsyn(DataSource.class, (dsBw) -> {
                     inject0(varH, dsBw);
                 });

@@ -4,8 +4,8 @@ import feign.Feign;
 import feign.Request;
 import feign.Retryer;
 import org.noear.solon.SolonApp;
-import org.noear.solon.Utils;
 import org.noear.solon.core.*;
+import org.noear.solon.core.util.TextUtil;
 
 import java.util.function.Consumer;
 
@@ -44,7 +44,7 @@ public class XPluginImp implements Plugin {
         Feign.Builder builder = builder0;
 
         //构建target
-        if (Utils.isEmpty(anno.url())) {
+        if (TextUtil.isEmpty(anno.url())) {
             LoadBalance upstream = getUpstream(anno);
             if (upstream != null) {
                 FeignTarget target = new FeignTarget(clz, anno.name(), anno.path(), upstream);

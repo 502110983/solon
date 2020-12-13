@@ -6,6 +6,7 @@ import org.noear.solon.Utils;
 import org.noear.solon.core.Aop;
 import org.noear.solon.core.handle.HandlerLoader;
 import org.noear.solon.core.Plugin;
+import org.noear.solon.core.util.TextUtil;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -39,7 +40,7 @@ public class XPluginImp implements Plugin {
 
         Aop.context().beanInjectorAdd(Inject.class, (fwT, anno) -> {
             Named tmp = fwT.getType().getAnnotation(Named.class);
-            if(tmp == null || Utils.isEmpty(tmp.value())){
+            if(tmp == null || TextUtil.isEmpty(tmp.value())){
                 Aop.context().beanInject(fwT, null);
             }else{
                 Aop.context().beanInject(fwT, tmp.value());

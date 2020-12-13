@@ -6,6 +6,7 @@ import org.noear.solon.Utils;
 import org.noear.solon.core.handle.ModelAndView;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Render;
+import org.noear.solon.core.util.TextUtil;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,7 +27,7 @@ public class JspRender implements Render {
     public JspRender(){
         String baseUri = Solon.cfg().get("slon.mvc.view.prefix");
 
-        if(Utils.isEmpty(baseUri)==false) {
+        if(TextUtil.isEmpty(baseUri)==false) {
             _baseUri = baseUri;
         }
     }

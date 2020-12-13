@@ -5,10 +5,10 @@ import io.netty.buffer.Unpooled;
 import io.netty.handler.codec.http.*;
 import io.netty.handler.codec.http.cookie.ServerCookieDecoder;
 import io.netty.handler.codec.http.cookie.Cookie;
-import org.noear.solon.Utils;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.UploadedFile;
 import org.noear.solon.core.NvMap;
+import org.noear.solon.core.util.TextUtil;
 import reactor.netty.http.server.HttpServerRequest;
 import reactor.netty.http.server.HttpServerResponse;
 
@@ -263,7 +263,7 @@ public class RnHttpContext extends Context {
         StringBuilder sb = new StringBuilder();
         sb.append(key).append("=").append(val).append(";");
 
-        if (Utils.isNotEmpty(path)) {
+        if (TextUtil.isNotEmpty(path)) {
             sb.append("path=").append(path).append(";");
         }
 
@@ -271,7 +271,7 @@ public class RnHttpContext extends Context {
             sb.append("max-age=").append(maxAge).append(";");
         }
 
-        if (Utils.isNotEmpty(domain)) {
+        if (TextUtil.isNotEmpty(domain)) {
             sb.append("domain=").append(domain.toLowerCase()).append(";");
         }
 

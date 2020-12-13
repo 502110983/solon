@@ -16,6 +16,7 @@ import org.noear.solon.core.Aop;
 import org.noear.solon.core.BeanWrap;
 import org.noear.solon.core.event.EventBus;
 import org.noear.solon.core.util.ResourceScaner;
+import org.noear.solon.core.util.TextUtil;
 
 import javax.sql.DataSource;
 import java.io.InputStream;
@@ -50,7 +51,7 @@ class SqlFactoryAdapter {
         DataSource dataSource = dsWrap.raw();
 
         String environment_id = props.getProperty("environment");
-        if (Utils.isEmpty(environment_id)) {
+        if (TextUtil.isEmpty(environment_id)) {
             environment_id = "solon-" + (environmentIndex++);
         }
 

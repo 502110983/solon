@@ -13,6 +13,7 @@ import org.noear.solon.core.Aop;
 import org.noear.solon.core.Plugin;
 import org.noear.solon.core.handle.*;
 import org.noear.solon.core.route.RouteTable;
+import org.noear.solon.core.util.TextUtil;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -132,13 +133,13 @@ public class XPluginImp implements Plugin {
         Operation operation = new Operation();
         operation.addTag(action.bean().clz().getName());
 
-        if (Utils.isNotEmpty(action.produces())) {
+        if (TextUtil.isNotEmpty(action.produces())) {
             operation.addProduces(action.produces());
         }else{
             operation.addProduces("*/*");
         }
 
-        if (Utils.isNotEmpty(action.consumes())) {
+        if (TextUtil.isNotEmpty(action.consumes())) {
             operation.addConsumes(action.consumes());
         }
 

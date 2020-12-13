@@ -3,6 +3,7 @@ package org.noear.solon.extend.validation.annotation;
 import org.noear.solon.Utils;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Result;
+import org.noear.solon.core.util.TextUtil;
 import org.noear.solon.extend.validation.Validator;
 
 /**
@@ -23,13 +24,13 @@ public class NotEmptyValidator implements Validator<NotEmpty> {
         if (name == null) {
             //来自函数
             for (String key : anno.value()) {
-                if (Utils.isEmpty(ctx.param(key))) {
+                if (TextUtil.isEmpty(ctx.param(key))) {
                     tmp.append(',').append(key);
                 }
             }
         } else {
             //来自参数
-            if (Utils.isEmpty(ctx.param(name))) {
+            if (TextUtil.isEmpty(ctx.param(name))) {
                 tmp.append(',').append(name);
             }
         }

@@ -6,6 +6,7 @@ import org.noear.solon.core.handle.Action;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Handler;
 import org.noear.solon.core.handle.Result;
+import org.noear.solon.core.util.TextUtil;
 import org.noear.solon.core.util.ThrowableUtil;
 import org.noear.solon.extend.validation.annotation.*;
 
@@ -184,8 +185,8 @@ public class ValidatorManager implements Handler {
             ctx.setHandled(true);
             ctx.statusSet(400);
             try {
-                if (Utils.isEmpty(message)) {
-                    if(Utils.isEmpty(rst.getDescription())){
+                if (TextUtil.isEmpty(message)) {
+                    if(TextUtil.isEmpty(rst.getDescription())){
                         message = new StringBuilder(100)
                                 .append("@")
                                 .append(ano.annotationType().getSimpleName())

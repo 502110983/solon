@@ -4,6 +4,7 @@ import org.noear.solon.core.NvMap;
 import org.noear.solon.Utils;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.UploadedFile;
+import org.noear.solon.core.util.TextUtil;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -147,7 +148,7 @@ public class JlHttpContext extends Context {
         try {
             String temp = paramMap().get(key);
 
-            if (Utils.isEmpty(temp)) {
+            if (TextUtil.isEmpty(temp)) {
                 return def;
             } else {
                 return temp;
@@ -332,7 +333,7 @@ public class JlHttpContext extends Context {
         StringBuilder sb = new StringBuilder();
         sb.append(key).append("=").append(val).append(";");
 
-        if (Utils.isNotEmpty(path)) {
+        if (TextUtil.isNotEmpty(path)) {
             sb.append("path=").append(path).append(";");
         }
 
@@ -340,7 +341,7 @@ public class JlHttpContext extends Context {
             sb.append("max-age=").append(maxAge).append(";");
         }
 
-        if (Utils.isNotEmpty(domain)) {
+        if (TextUtil.isNotEmpty(domain)) {
             sb.append("domain=").append(domain.toLowerCase()).append(";");
         }
 

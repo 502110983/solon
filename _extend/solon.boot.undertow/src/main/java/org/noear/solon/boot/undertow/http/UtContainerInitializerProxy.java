@@ -5,6 +5,7 @@ import org.noear.solon.Utils;
 import org.noear.solon.boot.undertow.holder.FilterHodler;
 import org.noear.solon.boot.undertow.holder.ServletHolder;
 import org.noear.solon.core.Aop;
+import org.noear.solon.core.util.TextUtil;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -66,7 +67,7 @@ public class UtContainerInitializerProxy implements ServletContainerInitializer 
 
 
             String name = f.anno.filterName();
-            if (Utils.isEmpty(name)) {
+            if (TextUtil.isEmpty(name)) {
                 name = f.filter.getClass().getSimpleName();
             }
 
@@ -96,7 +97,7 @@ public class UtContainerInitializerProxy implements ServletContainerInitializer 
             }
 
             String name = s.anno.name();
-            if (Utils.isEmpty(name)) {
+            if (TextUtil.isEmpty(name)) {
                 name = s.servlet.getClass().getSimpleName();
             }
 

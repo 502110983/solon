@@ -6,6 +6,7 @@ import org.noear.solon.Solon;
 import org.noear.solon.SolonApp;
 import org.noear.solon.Utils;
 import org.noear.solon.core.BeanWrap;
+import org.noear.solon.core.util.TextUtil;
 
 import java.lang.reflect.Proxy;
 import java.util.Map;
@@ -50,7 +51,7 @@ class DbManager {
     private SqlSessionHolder buildSqlSessionFactory(BeanWrap bw) {
         SqlFactoryAdapter adapter;
 
-        if (Utils.isEmpty(bw.name())) {
+        if (TextUtil.isEmpty(bw.name())) {
             adapter = new SqlFactoryAdapter(bw);
         } else {
             adapter = new SqlFactoryAdapter(bw, Solon.cfg().getProp("mybatis." + bw.name()));

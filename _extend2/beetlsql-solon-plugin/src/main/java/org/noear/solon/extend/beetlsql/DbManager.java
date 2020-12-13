@@ -7,6 +7,7 @@ import org.noear.solon.Utils;
 import org.noear.solon.core.Aop;
 import org.noear.solon.core.BeanWrap;
 import org.noear.solon.core.event.EventBus;
+import org.noear.solon.core.util.TextUtil;
 
 import javax.sql.DataSource;
 import java.util.Map;
@@ -36,7 +37,7 @@ class DbManager {
         DbConnectionSource cs = null;
         DataSource master = bw.raw();
 
-        if (Utils.isNotEmpty(bw.attrs())) {
+        if (TextUtil.isNotEmpty(bw.attrs())) {
             String[] slaveAry = bw.attrs().split(",");
             DataSource[] slaves = new DataSource[slaveAry.length];
 

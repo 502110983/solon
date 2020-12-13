@@ -5,6 +5,7 @@ import org.noear.solon.SolonApp;
 import org.noear.solon.Utils;
 import org.noear.solon.core.Aop;
 import org.noear.solon.core.Plugin;
+import org.noear.solon.core.util.TextUtil;
 import org.noear.solon.core.util.ThrowableUtil;
 
 import java.util.Properties;
@@ -27,7 +28,7 @@ public class XPluginImp implements Plugin {
             String name = anno.name();
             boolean enable = anno.enable();
 
-            if (Utils.isNotEmpty(name)) {
+            if (TextUtil.isNotEmpty(name)) {
                 Properties prop = Solon.cfg().getProp("solon.quartz." + name);
 
                 if (prop.size() > 0) {
@@ -38,7 +39,7 @@ public class XPluginImp implements Plugin {
                         enable = false;
                     }
 
-                    if (Utils.isNotEmpty(cronxTmp)) {
+                    if (TextUtil.isNotEmpty(cronxTmp)) {
                         cronx = cronxTmp;
                     }
                 }

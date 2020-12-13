@@ -9,6 +9,7 @@ import org.noear.solon.Utils;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.NvMap;
 import org.noear.solon.core.handle.SessionState;
+import org.noear.solon.core.util.TextUtil;
 
 /**
  * 它会是个单例，不能有上下文数据
@@ -97,7 +98,7 @@ public class RedisSessionState implements SessionState {
         String skey = cookieGet(SESSIONID_KEY);
         String smd5 = cookieGet(SESSIONID_MD5());
 
-        if(Utils.isEmpty(skey)==false && Utils.isEmpty(smd5)==false) {
+        if(TextUtil.isEmpty(skey)==false && TextUtil.isEmpty(smd5)==false) {
             if (EncryptUtil.md5(skey + SESSIONID_encrypt).equals(smd5)) {
                 return skey;
             }
@@ -170,7 +171,7 @@ public class RedisSessionState implements SessionState {
     public void sessionRefresh() {
         String skey = cookieGet(SESSIONID_KEY);
 
-        if (Utils.isEmpty(skey) == false) {
+        if (TextUtil.isEmpty(skey) == false) {
             cookieSet(SESSIONID_KEY, skey);
             cookieSet(SESSIONID_MD5(), EncryptUtil.md5(skey + SESSIONID_encrypt));
 

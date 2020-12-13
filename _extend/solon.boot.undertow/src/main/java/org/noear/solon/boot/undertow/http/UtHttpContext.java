@@ -7,6 +7,7 @@ import org.noear.solon.core.*;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.SessionState;
 import org.noear.solon.core.handle.UploadedFile;
+import org.noear.solon.core.util.TextUtil;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -139,7 +140,7 @@ public class UtHttpContext extends Context {
     public String param(String key, String def) {
         String temp = paramMap().get(key); //因为会添加参数，所以必须用这个
 
-        if(Utils.isEmpty(temp)){
+        if(TextUtil.isEmpty(temp)){
             return def;
         }else{
             return temp;
@@ -293,13 +294,13 @@ public class UtHttpContext extends Context {
     public void cookieSet(String key, String val, String domain, String path, int maxAge) {
         Cookie c = new Cookie(key,val);
 
-        if (Utils.isNotEmpty(path)) {
+        if (TextUtil.isNotEmpty(path)) {
             c.setPath(path);
         }
 
         c.setMaxAge(maxAge);
 
-        if (Utils.isNotEmpty(domain)) {
+        if (TextUtil.isNotEmpty(domain)) {
             c.setDomain(domain);
         }
 

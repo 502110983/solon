@@ -3,6 +3,7 @@ package org.noear.solon.extend.validation.annotation;
 import org.noear.solon.Utils;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Result;
+import org.noear.solon.core.util.TextUtil;
 import org.noear.solon.extend.validation.Validator;
 
 import java.time.format.DateTimeFormatter;
@@ -37,7 +38,7 @@ public class DateValidator implements Validator<Date> {
 
     private boolean tryParse(Date anno, String val) {
         try {
-            if (Utils.isEmpty(anno.value())) {
+            if (TextUtil.isEmpty(anno.value())) {
                 DateTimeFormatter.ISO_LOCAL_DATE_TIME.parse(val);
             } else {
                 DateTimeFormatter.ofPattern(anno.value()).parse(val);

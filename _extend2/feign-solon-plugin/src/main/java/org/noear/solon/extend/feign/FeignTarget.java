@@ -3,8 +3,8 @@ package org.noear.solon.extend.feign;
 import feign.Request;
 import feign.RequestTemplate;
 import feign.Target;
-import org.noear.solon.Utils;
 import org.noear.solon.core.LoadBalance;
+import org.noear.solon.core.util.TextUtil;
 
 public class FeignTarget<T> implements Target<T> {
     private final Class<T> type;
@@ -31,7 +31,7 @@ public class FeignTarget<T> implements Target<T> {
 
     @Override
     public String url() {
-        if (Utils.isEmpty(path)) {
+        if (TextUtil.isEmpty(path)) {
             return this.upstream.getServer();
         } else {
             return this.upstream.getServer() + path;

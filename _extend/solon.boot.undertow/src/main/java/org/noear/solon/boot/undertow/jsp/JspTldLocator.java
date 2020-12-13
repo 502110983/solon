@@ -38,6 +38,7 @@ import org.noear.solon.Utils;
 import org.noear.solon.core.JarClassLoader;
 import org.noear.solon.core.util.ResourceScaner;
 import org.noear.solon.core.util.ResourceUtil;
+import org.noear.solon.core.util.TextUtil;
 import org.noear.solon.ext.SupplierEx;
 
 /**
@@ -96,7 +97,7 @@ public class JspTldLocator {
 
         if (classPath != null) {
             String separator = System.getProperty("path.separator");
-            if(Utils.isEmpty(separator)){
+            if(TextUtil.isEmpty(separator)){
                 separator=":";
             }
 

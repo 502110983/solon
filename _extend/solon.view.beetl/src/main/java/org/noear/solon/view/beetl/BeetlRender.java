@@ -13,6 +13,7 @@ import org.noear.solon.core.handle.Render;
 import org.noear.solon.core.handle.ModelAndView;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.util.ResourceUtil;
+import org.noear.solon.core.util.TextUtil;
 import org.noear.solon.ext.SupplierEx;
 
 import java.io.ByteArrayOutputStream;
@@ -51,7 +52,7 @@ public class BeetlRender implements Render {
 
         String baseUri = Solon.cfg().get("slon.mvc.view.prefix");
 
-        if (Utils.isEmpty(baseUri) == false) {
+        if (TextUtil.isEmpty(baseUri) == false) {
             _baseUri = baseUri;
         }
 

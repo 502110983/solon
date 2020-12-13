@@ -4,6 +4,7 @@ package org.noear.solon.boot.smarthttp.http;
 import org.noear.solon.Utils;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Handler;
+import org.noear.solon.core.util.TextUtil;
 
 import java.net.URLDecoder;
 
@@ -34,7 +35,7 @@ public class XFormContentFilter implements Handler {
             return;
         }
 
-        if (Utils.isEmpty(ctx.body())) {
+        if (TextUtil.isEmpty(ctx.body())) {
             return;
         }
 

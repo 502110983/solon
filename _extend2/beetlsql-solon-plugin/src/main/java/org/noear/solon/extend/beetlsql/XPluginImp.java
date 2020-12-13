@@ -8,6 +8,7 @@ import org.noear.solon.core.Aop;
 import org.noear.solon.core.BeanWrap;
 import org.noear.solon.core.VarHolder;
 import org.noear.solon.core.Plugin;
+import org.noear.solon.core.util.TextUtil;
 
 import javax.sql.DataSource;
 
@@ -28,7 +29,7 @@ public class XPluginImp implements Plugin {
                 return;
             }
 
-            if (Utils.isEmpty(anno.value())) {
+            if (TextUtil.isEmpty(anno.value())) {
                 Aop.getAsyn(DataSource.class, (dsBw) -> {
                     create0(clz, dsBw);
                 });
@@ -42,7 +43,7 @@ public class XPluginImp implements Plugin {
         });
 
         Aop.context().beanInjectorAdd(Db.class, (varH, anno) -> {
-            if (Utils.isEmpty(anno.value())) {
+            if (TextUtil.isEmpty(anno.value())) {
                 Aop.getAsyn(DataSource.class, (dsBw) -> {
                     inject0(anno, varH, dsBw);
                 });
@@ -84,7 +85,7 @@ public class XPluginImp implements Plugin {
         }
 
         if (SQLManager.class.isAssignableFrom(varH.getType())) {
-            if (Utils.isNotEmpty(anno.value())) {
+            if (TextUtil.isNotEmpty(anno.value())) {
                 varH.setValue(tmp);
             } else {
                 Aop.getAsyn(SQLManager.class, (bw2) -> {
