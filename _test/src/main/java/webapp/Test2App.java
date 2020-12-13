@@ -1,8 +1,8 @@
 package webapp;
 
+import org.noear.solon.core.util.ThrowableUtil;
 import org.noear.solon.extend.socketd.SocketD;
 import org.noear.solon.Solon;
-import org.noear.solon.Utils;
 import webapp.demoh_socketd.HelloRpcService;
 
 public class Test2App {
@@ -18,7 +18,7 @@ public class Test2App {
                 Thread.sleep(100);
                 test_rpc_api(rpc);
             } catch (Throwable e) {
-                Utils.throwableUnwrap(e).printStackTrace();
+                ThrowableUtil.throwableUnwrap(e).printStackTrace();
             }
         }
     }
