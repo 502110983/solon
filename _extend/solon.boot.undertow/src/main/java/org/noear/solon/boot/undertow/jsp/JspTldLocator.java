@@ -37,6 +37,7 @@ import org.jboss.metadata.web.spec.VariableMetaData;
 import org.noear.solon.Utils;
 import org.noear.solon.core.JarClassLoader;
 import org.noear.solon.core.util.ResourceScaner;
+import org.noear.solon.core.util.ResourceUtil;
 import org.noear.solon.ext.SupplierEx;
 
 /**
@@ -79,7 +80,7 @@ public class JspTldLocator {
         //自己的.tld
         try {
             ResourceScaner.scan(JarClassLoader.global(), webinfo_path, n -> n.endsWith(".tld")).forEach((uri) -> {
-                loadTagLibraryInfo(tagLibInfos, () -> Utils.getResource(uri).openStream());
+                loadTagLibraryInfo(tagLibInfos, () -> ResourceUtil.getResource(uri).openStream());
             });
         } catch (Throwable ex) {
             ex.printStackTrace();

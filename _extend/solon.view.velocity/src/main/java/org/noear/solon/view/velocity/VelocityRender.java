@@ -10,6 +10,7 @@ import org.noear.solon.Utils;
 import org.noear.solon.core.handle.ModelAndView;
 import org.noear.solon.core.handle.Render;
 import org.noear.solon.core.handle.Context;
+import org.noear.solon.core.util.ResourceUtil;
 import org.noear.solon.ext.SupplierEx;
 
 import java.io.ByteArrayOutputStream;
@@ -70,7 +71,7 @@ public class VelocityRender implements Render {
     }
 
     private void forDebug() {
-        String dirroot = Utils.getResource("/").toString().replace("target/classes/", "");
+        String dirroot = ResourceUtil.getResource("/").toString().replace("target/classes/", "");
         File dir = null;
 
         if (dirroot.startsWith("file:")) {
@@ -96,7 +97,7 @@ public class VelocityRender implements Render {
     }
 
     private void forRelease() {
-        String root_path = Utils.getResource(_baseUri).getPath();
+        String root_path = ResourceUtil.getResource(_baseUri).getPath();
 
         velocity.setProperty(Velocity.FILE_RESOURCE_LOADER_CACHE, true);
         velocity.setProperty(Velocity.FILE_RESOURCE_LOADER_PATH, root_path);

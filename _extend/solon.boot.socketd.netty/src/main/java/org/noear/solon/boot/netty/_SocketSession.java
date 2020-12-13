@@ -5,6 +5,7 @@ import org.noear.solon.Utils;
 import org.noear.solon.core.handle.MethodType;
 import org.noear.solon.core.message.Message;
 import org.noear.solon.core.message.Session;
+import org.noear.solon.core.util.ThrowableUtil;
 import org.noear.solon.extend.socketd.MessageUtils;
 import org.noear.solon.extend.socketd.SessionBase;
 
@@ -138,7 +139,7 @@ class _SocketSession extends SessionBase {
                 send0(message);
             }
         } catch (RuntimeException ex) {
-            Throwable ex2 = Utils.throwableUnwrap(ex);
+            Throwable ex2 = ThrowableUtil.throwableUnwrap(ex);
             if (ex2 instanceof ConnectException) {
                 if (autoReconnect) {
                     real = null;

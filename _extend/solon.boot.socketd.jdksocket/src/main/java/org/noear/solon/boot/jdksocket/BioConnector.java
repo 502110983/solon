@@ -4,6 +4,7 @@ import org.noear.solon.Utils;
 import org.noear.solon.core.event.EventBus;
 import org.noear.solon.core.message.Message;
 import org.noear.solon.core.message.Session;
+import org.noear.solon.core.util.ThrowableUtil;
 import org.noear.solon.extend.socketd.ListenerProxy;
 import org.noear.solon.extend.socketd.Connector;
 
@@ -31,7 +32,7 @@ class BioConnector implements Connector<Socket> {
 
             return socket;
         } catch (Exception ex) {
-            throw Utils.throwableWrap(ex);
+            throw ThrowableUtil.throwableWrap(ex);
         }
     }
 

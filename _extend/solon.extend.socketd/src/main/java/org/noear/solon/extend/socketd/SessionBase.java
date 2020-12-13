@@ -5,6 +5,7 @@ import org.noear.solon.Utils;
 import org.noear.solon.core.message.Listener;
 import org.noear.solon.core.message.Message;
 import org.noear.solon.core.message.Session;
+import org.noear.solon.core.util.ThrowableUtil;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
@@ -60,7 +61,7 @@ public abstract class SessionBase implements Session {
             //等待响应
             return request.get(ListenerProxy.REQUEST_AND_RESPONSE_TIMEOUT_SECONDS, TimeUnit.SECONDS);
         } catch (Throwable ex) {
-            throw Utils.throwableWrap(ex);
+            throw ThrowableUtil.throwableWrap(ex);
         }
     }
 

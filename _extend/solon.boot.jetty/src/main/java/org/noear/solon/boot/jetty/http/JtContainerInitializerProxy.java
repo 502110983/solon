@@ -6,6 +6,7 @@ import org.noear.solon.Utils;
 import org.noear.solon.boot.jetty.holder.FilterHodler;
 import org.noear.solon.boot.jetty.holder.ServletHolder;
 import org.noear.solon.core.Aop;
+import org.noear.solon.core.util.ThrowableUtil;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -58,7 +59,7 @@ public class JtContainerInitializerProxy extends AbstractLifeCycle.AbstractLifeC
         try {
             onStartup(new HashSet<Class<?>>(), sc);
         } catch (Exception ex) {
-            throw Utils.throwableWrap(ex);
+            throw ThrowableUtil.throwableWrap(ex);
         }
     }
 

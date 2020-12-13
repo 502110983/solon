@@ -8,6 +8,7 @@ import org.noear.solon.SolonApp;
 import org.noear.solon.Utils;
 import org.noear.solon.boot.jetty.http.JtContainerInitializerProxy;
 import org.noear.solon.boot.jetty.http.JtHttpContextServlet;
+import org.noear.solon.core.util.ResourceUtil;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -56,12 +57,12 @@ class PluginJettyBase {
     }
 
     protected URL getRootPath() {
-        URL root = Utils.getResource("/");
+        URL root = ResourceUtil.getResource("/");
         if (root != null) {
             return root;
         }
         try {
-            String path = Utils.getResource("").toString();
+            String path = ResourceUtil.getResource("").toString();
             if (path.startsWith("jar:")) {
                 int endIndex = path.indexOf("!");
                 path = path.substring(0, endIndex + 1) + "/";
