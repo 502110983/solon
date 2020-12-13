@@ -7,6 +7,7 @@ import org.noear.solon.Solon;
 import org.noear.solon.SolonApp;
 import org.noear.solon.Utils;
 import org.noear.solon.core.NvMap;
+import org.noear.solon.core.util.PropUtil;
 
 import java.util.Map;
 import java.util.Properties;
@@ -39,7 +40,7 @@ public class DubboAdapter {
                 props.put("name", "dubbo-service-demo");
             }
 
-            Utils.bindTo(props, application);
+            PropUtil.bindTo(props, application);
 
             MonitorConfig monitor = new MonitorConfig();
             props = Solon.cfg().getXmap("dubbo.monitor");
@@ -127,7 +128,7 @@ public class DubboAdapter {
     public void regService(ServiceConfig cfg) {
         Properties prop = Solon.cfg().getProp("dubbo.service." + cfg.getInterface());
         if (prop.size() > 0) {
-            Utils.bindTo(prop, cfg);
+            PropUtil.bindTo(prop, cfg);
         }
 
         cfg.export();
@@ -151,7 +152,7 @@ public class DubboAdapter {
 
             Properties prop = Solon.cfg().getProp("dubbo.reference." + cfg.getInterface());
             if (prop.size() > 0) {
-                Utils.bindTo(prop, cfg);
+                PropUtil.bindTo(prop, cfg);
             }
 
             ReferenceConfig<T> l = refMap.putIfAbsent(clzKey, cfg);

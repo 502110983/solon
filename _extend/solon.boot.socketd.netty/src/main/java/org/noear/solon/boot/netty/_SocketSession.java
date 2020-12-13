@@ -139,7 +139,7 @@ class _SocketSession extends SessionBase {
                 send0(message);
             }
         } catch (RuntimeException ex) {
-            Throwable ex2 = ThrowableUtil.throwableUnwrap(ex);
+            Throwable ex2 = ThrowableUtil.unwrap(ex);
             if (ex2 instanceof ConnectException) {
                 if (autoReconnect) {
                     real = null;

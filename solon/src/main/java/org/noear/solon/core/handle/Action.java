@@ -13,7 +13,6 @@ import org.noear.solon.ext.RunnableEx;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -151,7 +150,7 @@ public class Action extends HandlerAide implements Handler {
 
             invoke0(x, obj);
         } catch (Throwable ex) {
-            ex = ThrowableUtil.throwableUnwrap(ex);
+            ex = ThrowableUtil.unwrap(ex);
 
             x.attrSet("error", ex);
             renderDo(ex, x);
@@ -231,7 +230,7 @@ public class Action extends HandlerAide implements Handler {
         } catch (Throwable ex) {
             c.setHandled(true); //停止处理
 
-            ex = ThrowableUtil.throwableUnwrap(ex);
+            ex = ThrowableUtil.unwrap(ex);
 
             if (ex instanceof DataThrowable) {
                 renderDo(ex, c);

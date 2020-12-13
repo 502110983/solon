@@ -442,7 +442,7 @@ public class SolonApp implements Handler, HandlerSlots {
         try {
             handle(x);
         } catch (Throwable ex) {
-            ex = ThrowableUtil.throwableUnwrap(ex);
+            ex = ThrowableUtil.unwrap(ex);
 
             x.statusSet(500);
             x.setHandled(true);

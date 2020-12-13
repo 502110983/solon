@@ -4,6 +4,7 @@ package org.noear.solon.core;
 import org.noear.solon.Solon;
 import org.noear.solon.Utils;
 import org.noear.solon.annotation.Note;
+import org.noear.solon.core.util.PropUtil;
 import org.noear.solon.core.util.ResourceUtil;
 import org.noear.solon.core.wrap.ClassWrap;
 import org.noear.solon.core.util.ConvertUtil;
@@ -237,7 +238,7 @@ public abstract class BeanContainer {
             //demo:${classpath:user.yml}
             //
             String url = name.substring(12, name.length() - 1);
-            Properties val = Utils.loadProperties(ResourceUtil.getResource(url));
+            Properties val = PropUtil.loadProperties(ResourceUtil.getResource(url));
 
             if (val == null) {
                 throw new RuntimeException(name + "  failed to load!");

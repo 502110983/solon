@@ -25,7 +25,7 @@ class PluginJetty extends PluginJettyBase implements Plugin {
             setup(app);
             _server.start();
         } catch (Throwable ex) {
-            throw ThrowableUtil.throwableWrap(ex);
+            throw ThrowableUtil.wrap(ex);
         }
     }
 

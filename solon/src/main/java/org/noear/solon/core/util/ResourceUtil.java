@@ -50,7 +50,7 @@ public class ResourceUtil {
             try {
                 return Utils.getString(url.openStream(), charset);
             } catch (Exception ex) {
-                throw ThrowableUtil.throwableWrap(ex);
+                throw ThrowableUtil.wrap(ex);
             }
         } else {
             return null;

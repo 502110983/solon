@@ -8,6 +8,7 @@ import org.noear.solon.core.event.EventListener;
 import org.noear.solon.core.handle.Handler;
 import org.noear.solon.core.handle.HandlerLoader;
 import org.noear.solon.core.message.Listener;
+import org.noear.solon.core.util.PropUtil;
 import org.noear.solon.core.wrap.ClassWrap;
 import org.noear.solon.core.wrap.FieldWrap;
 import org.noear.solon.core.wrap.MethodWrap;
@@ -49,7 +50,7 @@ public class AopContext extends BeanContainer {
             Inject typeInj = clz.getAnnotation(Inject.class);
             if (typeInj != null && Utils.isNotEmpty(typeInj.value())) {
                 if (typeInj.value().startsWith("${")) {
-                    Utils.injectProperties(bw.raw(), Solon.cfg().getPropByExpr(typeInj.value()));
+                    PropUtil.injectProperties(bw.raw(), Solon.cfg().getPropByExpr(typeInj.value()));
                 }
             }
 
@@ -383,7 +384,7 @@ public class AopContext extends BeanContainer {
             } else {
                 if (beanInj != null && Utils.isEmpty(beanInj.value()) == false) {
                     if (beanInj.value().startsWith("${")) {
-                        Utils.injectProperties(raw, Solon.cfg().getPropByExpr(beanInj.value()));
+                        PropUtil.injectProperties(raw, Solon.cfg().getPropByExpr(beanInj.value()));
                     }
                 }
 

@@ -18,7 +18,7 @@ public class Test2App {
                 Thread.sleep(100);
                 test_rpc_api(rpc);
             } catch (Throwable e) {
-                ThrowableUtil.throwableUnwrap(e).printStackTrace();
+                ThrowableUtil.unwrap(e).printStackTrace();
             }
         }
     }

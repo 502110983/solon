@@ -61,7 +61,7 @@ public abstract class SessionBase implements Session {
             //等待响应
             return request.get(ListenerProxy.REQUEST_AND_RESPONSE_TIMEOUT_SECONDS, TimeUnit.SECONDS);
         } catch (Throwable ex) {
-            throw ThrowableUtil.throwableWrap(ex);
+            throw ThrowableUtil.wrap(ex);
         }
     }
 

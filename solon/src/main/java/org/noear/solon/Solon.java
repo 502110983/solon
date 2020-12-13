@@ -82,7 +82,7 @@ public class Solon {
             try {
                 initialize.accept(global);
             } catch (Throwable ex) {
-                throw ThrowableUtil.throwableWrap(ex);
+                throw ThrowableUtil.wrap(ex);
             }
         }
 

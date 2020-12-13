@@ -8,7 +8,7 @@ public class ThrowableUtil {
     /**
      * 包装异常
      * */
-    public static RuntimeException throwableWrap(Throwable ex){
+    public static RuntimeException wrap(Throwable ex){
         if(ex instanceof RuntimeException){
             return  (RuntimeException)ex;
         }else {
@@ -19,7 +19,7 @@ public class ThrowableUtil {
     /**
      * 解包异常
      * */
-    public static Throwable throwableUnwrap(Throwable ex) {
+    public static Throwable unwrap(Throwable ex) {
         Throwable th = ex;
 
         while (true) {
@@ -45,7 +45,7 @@ public class ThrowableUtil {
         return th;
     }
 
-    public static boolean throwableHas(Throwable ex, Class<? extends Throwable> clz) {
+    public static boolean containIn(Throwable ex, Class<? extends Throwable> clz) {
         Throwable th = ex;
 
         while (true) {

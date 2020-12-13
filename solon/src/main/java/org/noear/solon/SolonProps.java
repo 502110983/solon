@@ -4,6 +4,7 @@ import org.noear.solon.core.JarClassLoader;
 import org.noear.solon.core.NvMap;
 import org.noear.solon.core.PluginEntity;
 import org.noear.solon.core.Props;
+import org.noear.solon.core.util.PropUtil;
 import org.noear.solon.core.util.ResourceScaner;
 import org.noear.solon.core.util.ResourceUtil;
 
@@ -100,7 +101,7 @@ public final class SolonProps extends Props {
      * */
     public SolonProps loadAdd(URL url) {
         if (url != null) {
-            Properties prop = Utils.loadProperties(url);
+            Properties prop = PropUtil.loadProperties(url);
 
             if (prop != null) {
                 putAll(prop);
@@ -148,7 +149,7 @@ public final class SolonProps extends Props {
      * */
     private void plugsScanMapDo(ClassLoader classLoader, URL url) {
         try {
-            Props p = new Props(Utils.loadProperties(url));
+            Props p = new Props(PropUtil.loadProperties(url));
 
             String clzName = p.get("solon.plugin");
 

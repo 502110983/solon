@@ -59,7 +59,7 @@ public class JtContainerInitializerProxy extends AbstractLifeCycle.AbstractLifeC
         try {
             onStartup(new HashSet<Class<?>>(), sc);
         } catch (Exception ex) {
-            throw ThrowableUtil.throwableWrap(ex);
+            throw ThrowableUtil.wrap(ex);
         }
     }
 

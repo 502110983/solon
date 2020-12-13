@@ -19,7 +19,7 @@ public class XPluginImp implements Plugin {
         try {
             JobManager.init();
         } catch (Exception ex) {
-            throw ThrowableUtil.throwableWrap(ex);
+            throw ThrowableUtil.wrap(ex);
         }
 
         Aop.context().beanBuilderAdd(Quartz.class, (clz, bw, anno) -> {
@@ -51,7 +51,7 @@ public class XPluginImp implements Plugin {
             try {
                 JobManager.start();
             } catch (Exception ex) {
-                throw ThrowableUtil.throwableWrap(ex);
+                throw ThrowableUtil.wrap(ex);
             }
         });
     }

@@ -74,7 +74,7 @@ public class JarClassLoader extends URLClassLoader {
         try {
             addJar(file.toURI().toURL(), true);
         } catch (Exception ex) {
-            throw ThrowableUtil.throwableWrap(ex);
+            throw ThrowableUtil.wrap(ex);
         }
     }
 
@@ -123,7 +123,7 @@ public class JarClassLoader extends URLClassLoader {
         try {
             removeJar(file.toURI().toURL());
         } catch (Exception ex) {
-            throw ThrowableUtil.throwableWrap(ex);
+            throw ThrowableUtil.wrap(ex);
         }
     }
 

@@ -32,7 +32,7 @@ class BioConnector implements Connector<Socket> {
 
             return socket;
         } catch (Exception ex) {
-            throw ThrowableUtil.throwableWrap(ex);
+            throw ThrowableUtil.wrap(ex);
         }
     }
 

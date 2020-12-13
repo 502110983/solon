@@ -203,7 +203,7 @@ public class ValidatorManager implements Handler {
 
                 ctx.render(Result.failure(400, message));
             } catch (Throwable ex) {
-                throw ThrowableUtil.throwableWrap(ex);
+                throw ThrowableUtil.wrap(ex);
             }
 
             return true;

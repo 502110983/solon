@@ -1,6 +1,7 @@
 package org.noear.solon.core;
 
 import org.noear.solon.Utils;
+import org.noear.solon.core.util.PropUtil;
 
 import java.util.Properties;
 import java.util.function.BiConsumer;
@@ -158,7 +159,7 @@ public class Aop {
      * @param propS 属性
      */
     public static <T> T inject(T bean, Properties propS) {
-        return Utils.injectProperties(bean, propS);
+        return PropUtil.injectProperties(bean, propS);
     }
 
 

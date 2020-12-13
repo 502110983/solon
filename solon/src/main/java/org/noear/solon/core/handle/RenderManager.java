@@ -86,7 +86,7 @@ public class RenderManager implements Render {
         try {
             return global.renderAndReturn(modelAndView, Context.current());
         } catch (Throwable e) {
-            throw ThrowableUtil.throwableWrap(e);
+            throw ThrowableUtil.wrap(e);
         }
     }
 

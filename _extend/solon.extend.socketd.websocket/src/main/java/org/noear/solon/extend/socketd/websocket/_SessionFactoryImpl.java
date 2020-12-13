@@ -1,6 +1,5 @@
 package org.noear.solon.extend.socketd.websocket;
 
-import org.noear.solon.Utils;
 import org.noear.solon.core.message.Session;
 import org.noear.solon.core.util.ThrowableUtil;
 import org.noear.solon.extend.socketd.SessionFactory;
@@ -20,7 +19,7 @@ public class _SessionFactoryImpl implements SessionFactory {
 
             return new _SocketClientSession(bioClient, autoReconnect);
         } catch (Exception ex) {
-            throw ThrowableUtil.throwableWrap(ex);
+            throw ThrowableUtil.wrap(ex);
         }
     }
 }

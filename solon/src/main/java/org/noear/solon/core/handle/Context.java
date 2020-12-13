@@ -3,7 +3,6 @@ package org.noear.solon.core.handle;
 import org.noear.solon.Utils;
 import org.noear.solon.annotation.Note;
 import org.noear.solon.core.*;
-import org.noear.solon.core.message.Session;
 import org.noear.solon.core.util.PathUtil;
 import org.noear.solon.core.util.ThrowableUtil;
 import org.noear.solon.core.wrap.ClassWrap;
@@ -342,7 +341,7 @@ public abstract class Context {
                 attrSet("output", str);
                 output(str.getBytes(charset));
             } catch (Throwable ex) {
-                throw ThrowableUtil.throwableWrap(ex);
+                throw ThrowableUtil.wrap(ex);
             }
         }
     }
