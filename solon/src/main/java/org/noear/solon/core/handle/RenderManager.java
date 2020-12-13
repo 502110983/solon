@@ -2,6 +2,7 @@ package org.noear.solon.core.handle;
 
 import org.noear.solon.Utils;
 import org.noear.solon.core.util.PrintUtil;
+import org.noear.solon.core.util.ThrowableUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -85,7 +86,7 @@ public class RenderManager implements Render {
         try {
             return global.renderAndReturn(modelAndView, Context.current());
         } catch (Throwable e) {
-            throw Utils.throwableWrap(e);
+            throw ThrowableUtil.throwableWrap(e);
         }
     }
 

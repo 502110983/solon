@@ -3,6 +3,7 @@ package org.noear.solon;
 import org.noear.solon.core.JarClassLoader;
 import org.noear.solon.core.NvMap;
 import org.noear.solon.core.util.PrintUtil;
+import org.noear.solon.core.util.ThrowableUtil;
 import org.noear.solon.ext.ConsumerEx;
 
 /**
@@ -81,7 +82,7 @@ public class Solon {
             try {
                 initialize.accept(global);
             } catch (Throwable ex) {
-                throw Utils.throwableWrap(ex);
+                throw ThrowableUtil.throwableWrap(ex);
             }
         }
 

@@ -4,6 +4,7 @@ import org.noear.solon.Solon;
 import org.noear.solon.Utils;
 import org.noear.solon.core.*;
 import org.noear.solon.core.event.EventBus;
+import org.noear.solon.core.util.ThrowableUtil;
 import org.noear.solon.ext.DataThrowable;
 import org.noear.solon.core.wrap.MethodWrap;
 import org.noear.solon.core.util.PathAnalyzer;
@@ -150,7 +151,7 @@ public class Action extends HandlerAide implements Handler {
 
             invoke0(x, obj);
         } catch (Throwable ex) {
-            ex = Utils.throwableUnwrap(ex);
+            ex = ThrowableUtil.throwableUnwrap(ex);
 
             x.attrSet("error", ex);
             renderDo(ex, x);
@@ -230,7 +231,7 @@ public class Action extends HandlerAide implements Handler {
         } catch (Throwable ex) {
             c.setHandled(true); //停止处理
 
-            ex = Utils.throwableUnwrap(ex);
+            ex = ThrowableUtil.throwableUnwrap(ex);
 
             if (ex instanceof DataThrowable) {
                 renderDo(ex, c);

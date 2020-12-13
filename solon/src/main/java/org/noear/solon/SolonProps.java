@@ -5,6 +5,7 @@ import org.noear.solon.core.NvMap;
 import org.noear.solon.core.PluginEntity;
 import org.noear.solon.core.Props;
 import org.noear.solon.core.util.ResourceScaner;
+import org.noear.solon.core.util.ResourceUtil;
 
 import java.net.URL;
 import java.util.*;
@@ -50,14 +51,14 @@ public final class SolonProps extends Props {
         this.args = args;
 
         //2.加载文件的配置
-        loadAdd(Utils.getResource("application.properties"));
-        loadAdd(Utils.getResource("application.yml"));
+        loadAdd(ResourceUtil.getResource("application.properties"));
+        loadAdd(ResourceUtil.getResource("application.yml"));
 
         //2.2.加载活动配置
         String active = get("solon.profiles.active");
         if(Utils.isNotEmpty(active)) {
-            loadAdd(Utils.getResource("application-" + active + ".properties"));
-            loadAdd(Utils.getResource("application-" + active + ".yml"));
+            loadAdd(ResourceUtil.getResource("application-" + active + ".properties"));
+            loadAdd(ResourceUtil.getResource("application-" + active + ".yml"));
         }
 
         //3.同步启动参数
@@ -111,7 +112,7 @@ public final class SolonProps extends Props {
     }
 
     public SolonProps loadAdd(String url) {
-        return loadAdd(Utils.getResource(url));
+        return loadAdd(ResourceUtil.getResource(url));
     }
 
 
@@ -124,12 +125,12 @@ public final class SolonProps extends Props {
             //3.查找插件配置（如果出错，让它抛出异常）
             ResourceScaner.scan(classLoader, "solonplugin", n -> n.endsWith(".properties") || n.endsWith(".yml"))
                     .stream()
-                    .map(k -> Utils.getResource(classLoader, k))
+                    .map(k -> ResourceUtil.getResource(classLoader, k))
                     .forEach(url -> plugsScanMapDo(classLoader, url));
 
             ResourceScaner.scan(classLoader, "META-INF/solon", n -> n.endsWith(".properties") || n.endsWith(".yml"))
                     .stream()
-                    .map(k -> Utils.getResource(classLoader, k))
+                    .map(k -> ResourceUtil.getResource(classLoader, k))
                     .forEach(url -> plugsScanMapDo(classLoader, url));
         }
 

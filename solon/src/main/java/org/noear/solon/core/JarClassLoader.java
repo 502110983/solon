@@ -1,6 +1,7 @@
 package org.noear.solon.core;
 
 import org.noear.solon.Utils;
+import org.noear.solon.core.util.ThrowableUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -73,7 +74,7 @@ public class JarClassLoader extends URLClassLoader {
         try {
             addJar(file.toURI().toURL(), true);
         } catch (Exception ex) {
-            throw Utils.throwableWrap(ex);
+            throw ThrowableUtil.throwableWrap(ex);
         }
     }
 
@@ -122,7 +123,7 @@ public class JarClassLoader extends URLClassLoader {
         try {
             removeJar(file.toURI().toURL());
         } catch (Exception ex) {
-            throw Utils.throwableWrap(ex);
+            throw ThrowableUtil.throwableWrap(ex);
         }
     }
 

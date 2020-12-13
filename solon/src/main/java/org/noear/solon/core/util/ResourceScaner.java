@@ -40,7 +40,7 @@ public class ResourceScaner {
 
         try {
             //1.查找资源
-            Enumeration<URL> roots = Utils.getResources(classLoader, path);
+            Enumeration<URL> roots = ResourceUtil.getResources(classLoader, path);
             while (roots.hasMoreElements()) {
                 //2.资源遍历
                 URL url = roots.nextElement();

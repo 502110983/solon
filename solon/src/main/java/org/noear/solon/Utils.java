@@ -1,5 +1,7 @@
 package org.noear.solon;
 
+import org.noear.solon.core.util.ResourceUtil;
+import org.noear.solon.core.util.ThrowableUtil;
 import org.noear.solon.core.wrap.ClassWrap;
 import org.noear.solon.core.*;
 
@@ -56,76 +58,6 @@ public class Utils {
         } catch (Exception ex) {
             throw new RuntimeException(ex);
         }
-    }
-
-    /**
-     * 包装异常
-     * */
-    public static RuntimeException throwableWrap(Throwable ex){
-        if(ex instanceof RuntimeException){
-            return  (RuntimeException)ex;
-        }else {
-            return new RuntimeException(ex);
-        }
-    }
-
-    /**
-     * 解包异常
-     * */
-    public static Throwable throwableUnwrap(Throwable ex) {
-        Throwable th = ex;
-
-        while (true) {
-            if (th instanceof RuntimeException) {
-                if (th.getCause() != null) {
-                    th = th.getCause();
-                } else {
-                    break;
-                }
-            } else {
-                break;
-            }
-        }
-
-        while (true) {
-            if (th instanceof InvocationTargetException) {
-                th = ((InvocationTargetException) th).getTargetException();
-            } else {
-                break;
-            }
-        }
-
-        return th;
-    }
-
-    public static boolean throwableHas(Throwable ex, Class<? extends Throwable> clz) {
-        Throwable th = ex;
-
-        while (true) {
-            if (clz.isAssignableFrom(th.getClass())) {
-                return true;
-            }
-
-            if (th.getCause() != null) {
-                th = th.getCause();
-            } else {
-                break;
-            }
-        }
-
-        while (true) {
-            if (clz.isAssignableFrom(th.getClass())) {
-                return true;
-            }
-
-            if (th instanceof InvocationTargetException) {
-                th = ((InvocationTargetException) th).getTargetException();
-            } else {
-                break;
-            }
-        }
-
-        return false;
     }
 
     /**
@@ -222,54 +154,7 @@ public class Utils {
         }
     }
 
-    /**
-     * 获取资源URL集
-     *
-     * @param name 资源名称
-     */
-    public static Enumeration<URL> getResources(String name) throws IOException {
-        return getResources(JarClassLoader.global(), name); //XUtil.class.getClassLoader().getResources(name);
-    }
 
-    public static Enumeration<URL> getResources(ClassLoader classLoader, String name) throws IOException {
-        return classLoader.getResources(name); //XUtil.class.getClassLoader().getResources(name);
-    }
-
-    /**
-     * 获取资源URL
-     *
-     * @param name 资源名称
-     */
-    public static URL getResource(String name) {
-        return getResource(JarClassLoader.global(), name); //XUtil.class.getResource(name);
-    }
-
-    public static URL getResource(ClassLoader classLoader, String name) {
-        return classLoader.getResource(name); //XUtil.class.getResource(name);
-    }
-
-    /**
-     * 获取资源并转为String
-     *
-     * @param name 资源名称
-     * @param charset 编码
-     * */
-    public static String getResourceAsString(String name, String charset) {
-        return getResourceAsString(JarClassLoader.global(), name, charset);
-    }
-
-    public static String getResourceAsString(ClassLoader classLoader, String name, String charset) {
-        URL url = getResource(classLoader, name);
-        if (url != null) {
-            try {
-                return getString(url.openStream(), charset);
-            } catch (Exception ex) {
-                throw throwableWrap(ex);
-            }
-        } else {
-            return null;
-        }
-    }
 
     public static String getString(InputStream ins, String charset) {
         if (ins == null) {
@@ -291,7 +176,7 @@ public class Utils {
                 return outs.toString(charset);
             }
         } catch (Exception ex) {
-            throw throwableWrap(ex);
+            throw ThrowableUtil.throwableWrap(ex);
         }
     }
 
@@ -361,7 +246,7 @@ public class Utils {
             return extend;
         }
 
-        URL temp = Utils.getResource("");
+        URL temp = ResourceUtil.getResource("");
 
         if (temp == null) {
             return null;

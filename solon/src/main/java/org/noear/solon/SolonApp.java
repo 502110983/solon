@@ -12,6 +12,7 @@ import org.noear.solon.core.event.AppLoadEndEvent;
 import org.noear.solon.core.event.BeanLoadEndEvent;
 import org.noear.solon.core.event.PluginLoadEndEvent;
 import org.noear.solon.core.message.Listener;
+import org.noear.solon.core.util.ThrowableUtil;
 
 import java.lang.annotation.Annotation;
 import java.util.*;
@@ -441,7 +442,7 @@ public class SolonApp implements Handler, HandlerSlots {
         try {
             handle(x);
         } catch (Throwable ex) {
-            ex = Utils.throwableUnwrap(ex);
+            ex = ThrowableUtil.throwableUnwrap(ex);
 
             x.statusSet(500);
             x.setHandled(true);
