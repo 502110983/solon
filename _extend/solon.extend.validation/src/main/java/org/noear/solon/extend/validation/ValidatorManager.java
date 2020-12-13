@@ -6,6 +6,7 @@ import org.noear.solon.core.handle.Action;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Handler;
 import org.noear.solon.core.handle.Result;
+import org.noear.solon.core.util.ThrowableUtil;
 import org.noear.solon.extend.validation.annotation.*;
 
 import java.lang.annotation.Annotation;
@@ -202,7 +203,7 @@ public class ValidatorManager implements Handler {
 
                 ctx.render(Result.failure(400, message));
             } catch (Throwable ex) {
-                throw Utils.throwableWrap(ex);
+                throw ThrowableUtil.throwableWrap(ex);
             }
 
             return true;

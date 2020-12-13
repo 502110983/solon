@@ -3,6 +3,7 @@ package org.noear.solon.extend.validation.annotation;
 import org.noear.solon.Utils;
 import org.noear.solon.core.handle.Context;
 import org.noear.solon.core.handle.Result;
+import org.noear.solon.core.util.ThrowableUtil;
 import org.noear.solon.extend.validation.Validator;
 
 /**
@@ -29,7 +30,7 @@ public class NoRepeatSubmitValidator implements Validator<NoRepeatSubmit> {
                         tmp.append("body:");
                         tmp.append(ctx.body()).append(";");
                     } catch (Exception ex) {
-                        throw Utils.throwableWrap(ex);
+                        throw ThrowableUtil.throwableWrap(ex);
                     }
                     break;
                 }

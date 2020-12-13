@@ -2,6 +2,7 @@ package org.noear.solon.extend.staticfiles;
 
 import org.noear.solon.Solon;
 import org.noear.solon.Utils;
+import org.noear.solon.core.util.ResourceUtil;
 
 import java.io.File;
 import java.net.URI;
@@ -35,7 +36,7 @@ public class StaticMappings extends ArrayList<StaticLocation> {
 
 
         if (Solon.cfg().isDebugMode()) {
-            String dirroot = Utils.getResource("/")
+            String dirroot = ResourceUtil.getResource("/")
                     .toString()
                     .replace("target/classes/", "");
 
@@ -62,7 +63,7 @@ public class StaticMappings extends ArrayList<StaticLocation> {
                         rst = uri.toURL();
                     }
                 } else {
-                    rst = Utils.getResource(m.location + path);
+                    rst = ResourceUtil.getResource(m.location + path);
                 }
 
                 if (rst != null) {

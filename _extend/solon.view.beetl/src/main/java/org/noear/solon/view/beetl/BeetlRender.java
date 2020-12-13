@@ -12,6 +12,7 @@ import org.noear.solon.core.JarClassLoader;
 import org.noear.solon.core.handle.Render;
 import org.noear.solon.core.handle.ModelAndView;
 import org.noear.solon.core.handle.Context;
+import org.noear.solon.core.util.ResourceUtil;
 import org.noear.solon.ext.SupplierEx;
 
 import java.io.ByteArrayOutputStream;
@@ -68,7 +69,7 @@ public class BeetlRender implements Render {
 
     private void forDebug() {
         //添加调试模式
-        String dirroot = Utils.getResource("/").toString().replace("target/classes/", "");
+        String dirroot = ResourceUtil.getResource("/").toString().replace("target/classes/", "");
         File dir = null;
 
         if (dirroot.startsWith("file:")) {

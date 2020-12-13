@@ -6,6 +6,7 @@ import org.noear.solon.Solon;
 import org.noear.solon.SolonApp;
 import org.noear.solon.Utils;
 import org.noear.solon.core.Aop;
+import org.noear.solon.core.util.ThrowableUtil;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -38,7 +39,7 @@ public class SolonJUnit4ClassRunner extends BlockJUnit4ClassRunner {
                     }
                 }
             } catch (Throwable ex) {
-                Utils.throwableUnwrap(ex).printStackTrace();
+                ThrowableUtil.throwableUnwrap(ex).printStackTrace();
             }
 
 

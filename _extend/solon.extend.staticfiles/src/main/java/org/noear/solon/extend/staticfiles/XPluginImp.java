@@ -5,6 +5,7 @@ import org.noear.solon.Utils;
 import org.noear.solon.core.handle.HandlerLink;
 import org.noear.solon.core.NvMap;
 import org.noear.solon.core.Plugin;
+import org.noear.solon.core.util.ResourceUtil;
 
 public class XPluginImp implements Plugin {
     @Override
@@ -20,7 +21,7 @@ public class XPluginImp implements Plugin {
             return;
         }
 
-        if (Utils.getResource("/static/") != null) {
+        if (ResourceUtil.getResource("/static/") != null) {
             //1.加载自定义的mime
             //
             NvMap mimeTypes = app.cfg().getXmap("solon.mime");

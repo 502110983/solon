@@ -5,6 +5,7 @@ import org.noear.solon.SolonApp;
 import org.noear.solon.Utils;
 import org.noear.solon.core.Aop;
 import org.noear.solon.core.Plugin;
+import org.noear.solon.core.util.ThrowableUtil;
 
 import java.util.Properties;
 
@@ -18,7 +19,7 @@ public class XPluginImp implements Plugin {
         try {
             JobManager.init();
         } catch (Exception ex) {
-            throw Utils.throwableWrap(ex);
+            throw ThrowableUtil.throwableWrap(ex);
         }
 
         Aop.context().beanBuilderAdd(Quartz.class, (clz, bw, anno) -> {
@@ -50,7 +51,7 @@ public class XPluginImp implements Plugin {
             try {
                 JobManager.start();
             } catch (Exception ex) {
-                throw Utils.throwableWrap(ex);
+                throw ThrowableUtil.throwableWrap(ex);
             }
         });
     }
