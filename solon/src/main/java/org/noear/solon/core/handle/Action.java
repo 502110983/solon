@@ -280,7 +280,7 @@ public class Action extends HandlerAide implements Handler {
                     x.statusSet(500);
 
                     if (Solon.cfg().isDebugMode()) {
-                        x.output(Utils.getFullStackTrace(((Throwable) result)));
+                        x.output(ThrowableUtil.getFullStackTrace(((Throwable) result)));
                     }
                 }
             } else {

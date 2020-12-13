@@ -1,5 +1,7 @@
 package org.noear.solon.core.util;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
 import java.lang.reflect.InvocationTargetException;
 
 public class ThrowableUtil {
@@ -71,5 +73,14 @@ public class ThrowableUtil {
         }
 
         return false;
+    }
+
+    /**
+     * 获取异常的完整内容
+     */
+    public static String getFullStackTrace(Throwable ex) {
+        StringWriter sw = new StringWriter();
+        ex.printStackTrace(new PrintWriter(sw, true));
+        return sw.getBuffer().toString();
     }
 }

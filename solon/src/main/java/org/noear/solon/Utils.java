@@ -219,69 +219,11 @@ public class Utils {
         return bean;
     }
 
-    /**
-     * 获取异常的完整内容
-     */
-    public static String getFullStackTrace(Throwable ex) {
-        StringWriter sw = new StringWriter();
-        ex.printStackTrace(new PrintWriter(sw, true));
-        return sw.getBuffer().toString();
-    }
 
 
 
-    /**
-     * 构建应用扩展目录
-     *
-     * @param extend 扩展配置
-     * @param autoMake 是否自动创建
-     * */
-    public static String buildExt(String extend, boolean autoMake) {
-        if (extend == null) {
-            return null;
-        }
 
-        if (extend.contains("/")) {
-            //如果全路径，直接返回
-            return extend;
-        }
 
-        URL temp = ResourceUtil.getResource("");
-
-        if (temp == null) {
-            return null;
-        } else {
-            String uri = temp.toString();
-            if (uri.startsWith("file:/")) {
-                int idx = uri.lastIndexOf("/target/");
-                if (idx > 0) {
-                    idx = idx + 8;
-                } else {
-                    idx = uri.lastIndexOf("/", idx) + 1;
-                }
-
-                uri = uri.substring(5, idx);
-            } else {
-                int idx = uri.indexOf("jar!/");
-                idx = uri.lastIndexOf("/", idx) + 1;
-
-                uri = uri.substring(9, idx);
-            }
-
-            uri = uri + extend + "/";
-            File dir = new File(uri);
-
-            if (dir.exists() == false) {
-                if (autoMake) {
-                    dir.mkdir();
-                } else {
-                    return null;
-                }
-            }
-
-            return uri;
-        }
-    }
 
     /**
      * 将 source:Map 数据，绑定到 target:bean

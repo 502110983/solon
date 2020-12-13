@@ -446,7 +446,7 @@ public class SolonApp implements Handler, HandlerSlots {
 
             x.statusSet(500);
             x.setHandled(true);
-            x.output(Utils.getFullStackTrace(ex));
+            x.output(ThrowableUtil.getFullStackTrace(ex));
         }
     }
 

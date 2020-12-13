@@ -3,8 +3,10 @@ package org.noear.solon.core;
 import org.noear.solon.Solon;
 import org.noear.solon.Utils;
 import org.noear.solon.core.util.PrintUtil;
+import org.noear.solon.core.util.ResourceUtil;
 
 import java.io.File;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
@@ -54,7 +56,7 @@ public class ExtendLoader {
                 autoMake = true;
             }
 
-            extend = Utils.buildExt(extend, autoMake);
+            extend = buildExtendDirectory(extend, autoMake);
 
             if (extend != null) {
                 //缓存扩展目径
@@ -186,6 +188,60 @@ public class ExtendLoader {
             } catch (Throwable ex) {
                 ex.printStackTrace();
             }
+        }
+    }
+
+
+    /**
+     * 构建应用扩展目录
+     *
+     * @param extend 扩展配置
+     * @param autoMake 是否自动创建
+     * */
+    public static String buildExtendDirectory(String extend, boolean autoMake) {
+        if (extend == null) {
+            return null;
+        }
+
+        if (extend.contains("/")) {
+            //如果全路径，直接返回
+            return extend;
+        }
+
+        URL temp = ResourceUtil.getResource("");
+
+        if (temp == null) {
+            return null;
+        } else {
+            String uri = temp.toString();
+            if (uri.startsWith("file:/")) {
+                int idx = uri.lastIndexOf("/target/");
+                if (idx > 0) {
+                    idx = idx + 8;
+                } else {
+                    idx = uri.lastIndexOf("/", idx) + 1;
+                }
+
+                uri = uri.substring(5, idx);
+            } else {
+                int idx = uri.indexOf("jar!/");
+                idx = uri.lastIndexOf("/", idx) + 1;
+
+                uri = uri.substring(9, idx);
+            }
+
+            uri = uri + extend + "/";
+            File dir = new File(uri);
+
+            if (dir.exists() == false) {
+                if (autoMake) {
+                    dir.mkdir();
+                } else {
+                    return null;
+                }
+            }
+
+            return uri;
         }
     }
 }

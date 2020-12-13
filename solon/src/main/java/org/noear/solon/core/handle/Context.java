@@ -347,7 +347,7 @@ public abstract class Context {
         }
     }
     @Note("输出内容:异常对象")
-    public void output(Throwable ex) { output(Utils.getFullStackTrace(ex)); }
+    public void output(Throwable ex) { output(ThrowableUtil.getFullStackTrace(ex)); }
 
     @Note("输出json")
     public void outputAsJson(String json) {
